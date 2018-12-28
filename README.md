@@ -18,7 +18,7 @@ Create two files per tunnel, using the examples below. You may have to create li
 scripts named `$name-up.sh` and `$name-down.sh`, those will be executed after the link is up
 and before it is destroyed.
 
-### /etc/wireguard/$name.sh
+### /etc/wireguard/`$name`.sh
 
 ```sh
 # ipv4 address of your peer
@@ -31,7 +31,7 @@ IPv6_REMOTE=
 IPv6_LOCAL=
 ```
 
-### /etc/wireguard/$name.conf
+### /etc/wireguard/`$name`.conf
 
 This is the normal wireguard configuration file, an example is below:
 
