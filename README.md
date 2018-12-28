@@ -9,9 +9,14 @@ It's old, but I was asked at #35c3 to upload it somewhere, so here it is.
 Copy the contents of `bin` to `/usr/local/bin` and the contents of `systemd` to
 `/etc/systemd/system`. Reload your systemd daemon (`systemctl daemon-reload`).
 
+You may want to adjust the `wireguard` script inside `bin` to not use link up/down
+scripts.
+
 ## Configuration of tunnels
 
-Create two files per tunnel, using the examples below:
+Create two files per tunnel, using the examples below. You may have to create link up/down
+scripts named `$name-up.sh` and `$name-down.sh`, those will be executed after the link is up
+and before it is destroyed.
 
 ### /etc/wireguard/$name.sh
 
