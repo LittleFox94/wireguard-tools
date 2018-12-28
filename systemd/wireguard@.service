@@ -1,0 +1,11 @@
+[Unit]
+Description=Wireguard instances
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/wireguard start %i
+ExecStop=/usr/local/bin/wireguard  stop %i
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+action=$1
+interface=$2
+
+. /etc/wireguard/${interface}.sh
+
+case $action in
+    start)
+        ip link add dev $interface type wireguard
+        ip link set up $interface
+        ip addr add $IPv4_LOCAL peer $IPv4_REMOTE dev $interface
+        ip addr add $IPv6_LOCAL dev $interface peer $IPv6_REMOTE/128
+        wg setconf $interface /etc/wireguard/${interface}.conf
+
+        /etc/wireguard/${interface}-up.sh
+        ;;
+    stop)
+        /etc/wireguard/${interface}-down.sh
+        ip link del $interface
+        ;;
+esac
